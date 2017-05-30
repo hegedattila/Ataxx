@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="50.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inf.unideb.hu.ataxx.controller.FXMLController">
+    <stylesheets>
+        <URL value="@/styles/Styles.css" />
+    </stylesheets>
+   <children>
+      <Button fx:id="pass" layoutX="39.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleButtonPass" text="Passz" />
+      <Button fx:id="newGame" layoutX="110.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleButtonNewGame" text="Új játék" />
+   </children>
+</AnchorPane>
