@@ -24,10 +24,10 @@ Döntetlen ebben a fajta játékban nincs, mivel páratlan a mezők száma.
 
 ## Telepítés
 
-Az alkalmazás egy <b>Apace Maven 3<b> alkalmazás, így a telepítéshez szükséges
-az apache <b>maven plugin 3.0.5<b>-ös verziója, valamint a <b>JDK 1.8<b>-as verziója.
+Az alkalmazás egy <b>Apace Maven 3</b> alkalmazás, így a telepítéshez szükséges
+az apache <b>maven plugin 3.0.5</b>-ös verziója, valamint a <b>JDK 1.8</b>-as verziója.
 
-Ezek után a projekt főkönyvtárában használjuk az <i>mvn clean install<i> parancsot.
+Ezek után a projekt főkönyvtárában használjuk az <i>mvn clean install</i> parancsot.
 
 ## Licensz
 
