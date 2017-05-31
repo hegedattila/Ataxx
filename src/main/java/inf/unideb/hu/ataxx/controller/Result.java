@@ -11,6 +11,10 @@ package inf.unideb.hu.ataxx.controller;
  */
 import javax.persistence.*;
 
+/**
+ *
+ * @author hegedattila
+ */
 @Entity
 @Table(name = "ataxx")
 public class Result {
@@ -25,34 +29,66 @@ public class Result {
     private int red;
     private int blue;
 
+    /**
+     *
+     * @param red
+     * @param blue
+     */
     public Result(int red, int blue) {
         this.red = red;
         this.blue = blue;
     }
 
+    /**
+     *
+     */
     public Result() {
     }
 
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getRed() {
         return red;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getBlue() {
         return blue;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @param red
+     */
     public void setRed(int red) {
         this.red = red;
     }
 
+    /**
+     *
+     * @param blue
+     */
     public void setBlue(int blue) {
         this.blue = blue;
     }

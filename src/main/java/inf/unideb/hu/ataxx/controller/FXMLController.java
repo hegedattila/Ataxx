@@ -11,6 +11,10 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
+/**
+ *
+ * @author hegedattila
+ */
 public class FXMLController implements Initializable {
     
     private Game model;

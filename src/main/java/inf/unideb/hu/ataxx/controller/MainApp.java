@@ -17,8 +17,13 @@ import javafx.stage.Stage;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-
+/**
+ *
+ * @author hegedattila
+ */
 public class MainApp extends Application {
     
     static boolean choosing = true;
@@ -35,6 +40,7 @@ public class MainApp extends Application {
     static Board board;
     static Scene scene;
     
+    private static Logger logger = LoggerFactory.getLogger(MainApp.class);
     
     private int toBoard(double pixel) {
         return (int)(pixel - 50)/ Board.TILE_SIZE;
@@ -77,7 +83,8 @@ public class MainApp extends Application {
 //                                System.out.println("Valid.");
                             }
                             else
-                                System.out.println("Choose another!");
+//                                System.out.println("Choose another!");
+                                logger.info("Invalid choose from {} player", game.isIsCurrentRed() ? "RED" : "BLUE");
                         }
                         else{
                             newX = toBoard(mouseEvent.getSceneX());
@@ -92,20 +99,21 @@ public class MainApp extends Application {
                                 vbox.setPrefSize(Board.TILE_SIZE * Board.WIDTH + 100, Board.TILE_SIZE * Board.HEIGHT + 100);
                                 scene.setRoot(vbox);
                                 if(game.isEnd()){
-                                    System.out.println("A játéknak vége. Piros:" + game.getRedPoints() + " Kék: " + game.getBluePoints());
+//                                    System.out.println("A játéknak vége. Piros:" + game.getRedPoints() + " Kék: " + game.getBluePoints());
+                                    logger.info("A játéknak vége. Piros: {} Kék: {}",game.getRedPoints(), game.getBluePoints());
+
+                                    Result eredmeny = new Result(game.getRedPoints(), game.getBluePoints());
 
 
-                                Result eredmeny = new Result(game.getRedPoints(), game.getBluePoints());
 
-
-
-                                em.getTransaction().begin();
-                                em.persist(eredmeny);
-                                em.getTransaction().commit();
+                                    em.getTransaction().begin();
+                                    em.persist(eredmeny);
+                                    em.getTransaction().commit();
                                 }
                             }
                             else{
-                                System.out.println("Choose again!");
+//                                System.out.println("Choose again!");
+                                logger.info("Invalid move from {} player", game.isIsCurrentRed() ? "RED" : "BLUE");
                                 choosing = !choosing;
                             }
                         }

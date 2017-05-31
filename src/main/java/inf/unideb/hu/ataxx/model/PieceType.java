@@ -6,9 +6,19 @@
 package inf.unideb.hu.ataxx.model;
 
 /**
- *
+ * A két lehetséges terület típus, ha a terület foglalt.
+ * 
  * @author hegedattila
  */
 public enum PieceType {
-    RED, BLUE
+
+    /**
+     *
+     */
+    RED,
+
+    /**
+     *
+     */
+    BLUE
 }

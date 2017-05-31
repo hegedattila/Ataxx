@@ -123,5 +123,131 @@ public class GameTest {
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
     }
+
+    /**
+     * Test of getWIDTH method, of class Game.
+     */
+    @Test
+    public void testGetWIDTH() {
+        System.out.println("getWIDTH");
+        int expResult = 7;
+        int result = Game.getWIDTH();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of setWIDTH method, of class Game.
+     */
+    @Test
+    public void testSetWIDTH() {
+        System.out.println("setWIDTH");
+        int WIDTH = 7;
+        Game.setWIDTH(WIDTH);
+    }
+
+    /**
+     * Test of getHEIGHT method, of class Game.
+     */
+    @Test
+    public void testGetHEIGHT() {
+        System.out.println("getHEIGHT");
+        int expResult = 7;
+        int result = Game.getHEIGHT();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of setHEIGHT method, of class Game.
+     */
+    @Test
+    public void testSetHEIGHT() {
+        System.out.println("setHEIGHT");
+        int HEIGHT = 7;
+        Game.setHEIGHT(HEIGHT);
+    }
+
+    /**
+     * Test of isIsCurrentRed method, of class Game.
+     */
+    @Test
+    public void testIsIsCurrentRed() {
+        System.out.println("isIsCurrentRed");
+        boolean expResult = true;
+        boolean result = Game.isIsCurrentRed();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of setIsCurrentRed method, of class Game.
+     */
+    @Test
+    public void testSetIsCurrentRed() {
+        System.out.println("setIsCurrentRed");
+        boolean isCurrentRed = false;
+        Game.setIsCurrentRed(isCurrentRed);
+    }
+    
+    /**
+     * Test of setRedPoints method, of class Game.
+     */
+    @Test
+    public void testSetRedPoints() {
+        System.out.println("setRedPoints");
+        int redPoints = 2;
+        Game.setRedPoints(redPoints);
+    }
+
+    /**
+     * Test of getRedPoints method, of class Game.
+     */
+    @Test
+    public void testGetRedPoints() {
+        System.out.println("getRedPoints");
+        int expResult = 2;
+        int result = Game.getRedPoints();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getBluePoints method, of class Game.
+     */
+    @Test
+    public void testGetBluePoints() {
+        System.out.println("getBluePoints");
+        int expResult = 2;
+        int result = Game.getBluePoints();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of setBluePoints method, of class Game.
+     */
+    @Test
+    public void testSetBluePoints() {
+        System.out.println("setBluePoints");
+        int bluePoints = 2;
+        Game.setBluePoints(bluePoints);
+    }
+
+    /**
+     * Test of getBoard method, of class Game.
+     */
+//    @Test
+//    public void testGetBoard() {
+//        System.out.println("getBoard");
+//        Tile[][] expResult = new Tile[7][7];
+//        Tile[][] result = Game.getBoard();
+//        assertArrayEquals(expResult, result);
+//    }
+
+    /**
+     * Test of setBoard method, of class Game.
+     */
+    @Test
+    public void testSetBoard() {
+        System.out.println("setBoard");
+        Tile[][] board = new Tile[7][7];
+        Game.setBoard(board);
+    }
     
 }

@@ -6,11 +6,25 @@
 package inf.unideb.hu.ataxx.model;
 
 /**
- *
+ * A három lehetséges lépés.
+ * 
  * @author hegedattila
  */
 public enum MoveType {
     
-    NONE, ONE, TWO
+    /**
+     *
+     */
+    NONE,
+
+    /**
+     *
+     */
+    ONE,
+
+    /**
+     *
+     */
+    TWO
     
 }
