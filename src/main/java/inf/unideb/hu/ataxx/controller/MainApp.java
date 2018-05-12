@@ -21,31 +21,91 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
- * @author hegedattila
+ * A fő kontroller osztály.
+ * 
+ * Innen indul az alkalmazás és innen kezeli az adatbázissal kapcsolatos 
+ * osztályt is.
+ * 
+ * @author Hegedűs Attila
  */
 public class MainApp extends Application {
     
+    /**
+     * Logikai érték annak eldöntésére, hogy most mezőt választunk ki lépésre,
+     * vagy célmezőt választunk-e.
+     */
     static boolean choosing = true;
+    /**
+     * Létrehozott változók a lépésre és célnak kiválasztott mezők
+     * koordinátáihoz, valamint inicializálva a tábla melletti terület nagysága
+     * az alkalmazásban (pixelben).
+     */
     int oldX, oldY, newX, newY, margin = 100;
     
+    /**
+     * Lépés előtti és utána tábla.
+     */
     TileView oldTile, newTile;
     
+    /**
+     * EntityManagerFactory az adatbáziskapcsolathoz.
+     */
     private static EntityManagerFactory emf;
+    /**
+     * EntityManager az adatbáziskapcsolathoz.
+     */
     private static EntityManager em;
     
+    /**
+     * Az alkalmazás felülete (tábla és gombok).
+     */
     static VBox vbox;
+    /**
+     * Az alkalmazás felületének szülője.
+     */
     static Parent root;
+    /**
+     * Egy játék példánya.
+     */
     static Game game;
+    /**
+     * Egy tábla példánya.
+     */
     static Board board;
+    /**
+     * Az alkalmazás felülete.
+     */
     static Scene scene;
     
+    /**
+     * Logolásért felelős példány.
+     */
     private static Logger logger = LoggerFactory.getLogger(MainApp.class);
     
+    /**
+     * Visszaadja, hogy a képernyőn kattintott pixel melyik sorindexet,
+     * vagy oszlopindexet jelenti, attól függően,
+     * hogy az egér X vagy Y koordinátáját kapja-e.
+     * 
+     * Mivel négyzetalakú a tábla, így működését tekintve ugyanaz.
+     * 
+     * @param pixel Az egérrel kattintott X vagy Y pixel.
+     * @return A táblán kattintott mező sor, vagy oszlopindexe.
+     */
     private int toBoard(double pixel) {
         return (int)(pixel - 50)/ Board.TILE_SIZE;
     }
     
+    /**
+     * Az alkalmazás indulásakor indított metódus.
+     * 
+     * Itt kapcsolódik össze a legtöbb funkció.
+     * Itt van kezelve az adatbáziskapcsolat, innen indul új játék,
+     * itt vannak kezelve a lépések fogadása és itt van lekezelve a játék vége is.
+     * 
+     * @param stage Az alkalmazás felülete.
+     * @throws Exception ha valami különleges történik.
+     */
     @Override
     public void start(Stage stage) throws Exception {
         
@@ -130,18 +190,22 @@ public class MainApp extends Application {
         stage.show();
     }
     
+    /**
+     * Az alkalmazás bezárásakor lezárja az adatbáziskapcsolatot.
+     */
     private void bezar(){
         em.close();
         emf.close();
     }
 
     /**
-     * The main() method is ignored in correctly deployed JavaFX application.
-     * main() serves only as fallback in case the application can not be
-     * launched through deployment artifacts, e.g., in IDEs with limited FX
-     * support. NetBeans ignores main().
-     *
-     * @param args the command line arguments
+     * A main() függvény jól elkészített JavaFX applikációnál figyelmen kívül
+     * lesz hagyva.
+     * 
+     * A main() akkor lesz használatban, ha valamilyen okból nem indul el a 
+     * JavaFX alkalmazás.
+     * 
+     * @param args a parancssori argumentumok.
      */
     public static void main(String[] args) {
         launch(args);

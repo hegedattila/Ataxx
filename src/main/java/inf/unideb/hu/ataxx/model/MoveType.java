@@ -6,24 +6,33 @@
 package inf.unideb.hu.ataxx.model;
 
 /**
- * A három lehetséges lépés.
+ * A három lehetséges lépést definiáló osztály.
  * 
- * @author hegedattila
+ * @author Hegedűs Attila
  */
 public enum MoveType {
     
     /**
-     *
+     * Az érvénytelen lépés.
+     * 
+     * Ez a lépés típusa, ha kettőnél több mezőt szeretett volna lépni a
+     * játékos, vagy már foglalt mezőt választott ki célnak.
      */
     NONE,
 
     /**
-     *
+     * Az egymezős lépés.
+     * 
+     * Ez a lépés típusa ha a célmező a szomszédja a lépésre kiválasztott
+     * mezőnek.
      */
     ONE,
 
     /**
-     *
+     * A kétmezős lépés.
+     * 
+     * Ez a lépés típusa ha a célmező és a lépésre kiválasztott mező között van
+     * egy mező.
      */
     TWO
     

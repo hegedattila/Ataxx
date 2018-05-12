@@ -11,14 +11,29 @@ package inf.unideb.hu.ataxx.model;
  * Itt található a játék kezdőállapotának inicializálása, a lépések kezelése,
  * a végállapot felismerése, valamint a játékhoz szükséges egyéb információk.
  * 
- * @author hegedattila
+ * @author Hegedűs Attila
  */
 public class Game {
 
+    /**
+     * Inicializálja a játéktábla szélességét 7 mezőre.
+     */
     private static int WIDTH = 7;
+    /**
+     * Inicializálja a játéktábla magasságát 7 mezőre.
+     */
     private static int HEIGHT = 7;
 
+    /**
+     * Logikai érték, hogy melyik az aktuális játékos.
+     * 
+     * True, ha a piros terültekkel rendelkező játékos lép,
+     * False ha a kék területtekkel rendelkező játékos.
+     */
     private static boolean isCurrentRed;
+    /**
+     * A két játékos pontszámainak tárolására használt változók.
+     */
     private static int redPoints, bluePoints;
 
     /**
@@ -188,6 +203,15 @@ public class Game {
 
     }
 
+    /**
+     * Létrehoz egy elfoglalt mezőt a megadott mezőtípussal és a megadott
+     * koordinátákkal.
+     * 
+     * @param pieceType A mező típusa. Két típus lehet: RED vagy BLUE
+     * @param x A létrehozott mező sorindexe.
+     * @param y A létrehozott mező oszlopindexe.
+     * @return Egy kész mező a megadott típussal és koordinátákkal.
+     */
     private static Piece makePiece(PieceType pieceType, int x, int y) {
         Piece piece = new Piece(pieceType, x, y);
 
@@ -213,7 +237,21 @@ public class Game {
             return false;
         }
     }
-
+    
+    /**
+     * Megadja, hogy a kiválasztott lépés milyen típusú lépésnek számít.
+     * 
+     * Háromféle lépéstípus van. Egy mezős lépés, ha a közvetlen szomszédjába
+     * lép. Két mezős lépés ha a két kiválasztott terület között van egy mező.
+     * Érvénytelen lépés pedig, ha vagy kettőnél többet akar lépni, vagy 
+     * a célnak kiválasztott mező már foglalt.
+     * 
+     * @param oldX A lépésre kiválasztott mező sorindexe.
+     * @param oldY A lépésre kiválasztott mező oszlopindexe.
+     * @param newX A lépés céljának kiválasztott mező sorindexe.
+     * @param newY A lépés céljának kiválasztott mező oszlopindexe.
+     * @return A lépés typusa.
+     */
     private MoveResult tryMove(int oldX, int oldY, int newX, int newY) {
 
         if (board[newX][newY].hasPiece()

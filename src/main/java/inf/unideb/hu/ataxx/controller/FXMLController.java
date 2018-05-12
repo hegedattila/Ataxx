@@ -12,25 +12,41 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
 /**
- *
- * @author hegedattila
+ * Kontroller osztály a gombok kezelésére.
+ * 
+ * @author Hegedűs Attila
  */
 public class FXMLController implements Initializable {
     
+    /**
+     * A játék logikájának egy példánya.
+     */
     private Game model;
     
+    /**
+     * "Passz" gomb.
+     */
     @FXML
     private Button pass;
     
+    /**
+     * "Új játék" gomb.
+     */
     @FXML
     private Button newGame;
     
+    /**
+     * Passz gomb funkciója.
+     */
     @FXML
     private void handleButtonPass(){
         model.setIsCurrentRed(!model.isIsCurrentRed());
         MainApp.choosing = true;
     }
     
+    /**
+     * Új játék gomb funkciója.
+     */
     @FXML
     private void handleButtonNewGame(){
         MainApp.game.startNewGame();
@@ -42,7 +58,6 @@ public class FXMLController implements Initializable {
         
         MainApp.choosing = true;
     }
-    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -5,34 +5,51 @@
  */
 package inf.unideb.hu.ataxx.controller;
 
-/**
- *
- * @author hegedattila
- */
+
 import javax.persistence.*;
 
 /**
- *
- * @author hegedattila
+ * Az adatbázisért felelős osztály.
+ * 
+ * Az "ataxx" nevű tábla feltöltésére.
+ * Minden játék végén egy új rekord kerül az adatbázisba.
+ * 
+ * @author Hegedűs Attila
  */
 @Entity
 @Table(name = "ataxx")
 public class Result {
     
+    /**
+     * Beállítja a rekord id-ját egy automatikusan növekedvő értékekkel
+     * rendelkelkező "id" nevű oszlopra.
+     */
     @Id
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="szekv")
     @SequenceGenerator(name="szekv", sequenceName = "szekvencia", allocationSize=1)
     
+    /**
+     * A rekord id-ja.
+     */
     private int id;
     
+    /**
+     * A piros mezőkkel rendelkező játékos pontjai a játék végén.
+     */
     private int red;
+    /**
+     * A kék mezőkkel rendelkező játékos pontjai a játék végén.
+     */
     private int blue;
 
     /**
-     *
-     * @param red
-     * @param blue
+     * Az osztály konstruktora.
+     * 
+     * Felveszi a megfelelő pontszámokat.
+     * 
+     * @param red A piros mezőkkel rendelkező játékos pontjai a játék végén.
+     * @param blue A kék mezőkkel rendelkező játékos pontjai a játék végén.
      */
     public Result(int red, int blue) {
         this.red = red;
@@ -40,54 +57,54 @@ public class Result {
     }
 
     /**
-     *
-     */
-    public Result() {
-    }
-
-    /**
-     *
-     * @return
+     * Visszaadja a rekord id-ját.
+     * 
+     * @return A rekord azonosítója.
      */
     public int getId() {
         return id;
     }
 
     /**
-     *
-     * @return
+     * Visszaadja a piros mezőkkel rendelkező játékos pontszámát a játék végén.
+     * 
+     * @return A piros mezőkkel rendelkező játékos pontszáma a játék végén.
      */
     public int getRed() {
         return red;
     }
 
     /**
+     * Visszaadja a kék mezőkkel rendelkező játékos pontszámát a játék végén.
      *
-     * @return
+     * @return A kék mezőkkel rendelkező játékos pontszáma a játék végén.
      */
     public int getBlue() {
         return blue;
     }
 
     /**
-     *
-     * @param id
+     * Beállítja a rekord id-ját.
+     * 
+     * @param id A rekord azonosítója.
      */
     public void setId(int id) {
         this.id = id;
     }
 
     /**
-     *
-     * @param red
+     * Beállítja a piros mezőkkel rendelkező játékos pontszámát a játék végén.
+     * 
+     * @param red A piros mezőkkel rendelkező játékos pontszáma.
      */
     public void setRed(int red) {
         this.red = red;
     }
 
     /**
-     *
-     * @param blue
+     * Beállítja a kék mezőkkel rendelkező játékos pontszámát a játék végén.
+     * 
+     * @param blue A kék mezőkkel rendelkező játékos pontszáma.
      */
     public void setBlue(int blue) {
         this.blue = blue;

@@ -6,19 +6,21 @@
 package inf.unideb.hu.ataxx.model;
 
 /**
- * A két lehetséges terület típus, ha a terület foglalt.
+ * A két lehetséges terület típust definiáló osztály.
  * 
- * @author hegedattila
+ * A két lehetséges területtípus, ha a terület foglalt.
+ * 
+ * @author Hegedűs Attila
  */
 public enum PieceType {
 
     /**
-     *
+     * A piros terület.
      */
     RED,
 
     /**
-     *
+     * A kék terület.
      */
     BLUE
 }

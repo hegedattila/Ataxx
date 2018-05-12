@@ -11,42 +11,58 @@ package inf.unideb.hu.ataxx.model;
  * Egy lépés után eltárolja, hogy milyen típusú lépés volt, illetve ha szabályos
  * lépés volt, akkor a hozzá tartozó új területet is.
  * 
- * @author hegedattila
+ * @author Hegedűs Attila
  */
 public class MoveResult {
     
+    /**
+     * A lépés típusa.
+     */
     private MoveType type;
 
     /**
-     *
-     * @return
+     * Visszaadja a lépés típusát.
+     * 
+     * @return a lépés típusa.
      */
     public MoveType getType() {
         return type;
     }
 
+    /**
+     * A célmező.
+     */
     private Piece piece;
 
     /**
-     *
-     * @return
+     * Visszaadja a célmezőt.
+     * 
+     * @return a célmező.
      */
     public Piece getPiece() {
         return piece;
     }
 
     /**
-     *
-     * @param type
+     * Az osztály konstruktora.
+     * 
+     * @param type a lépés típusa.
      */
     public MoveResult(MoveType type) {
         this(type, null);
     }
 
     /**
-     *
-     * @param type
-     * @param piece
+     * Beállítja a lépés típusát és a célmezőt.
+     * 
+     * Háromféle lépéstípus van. Egy mezős lépés, ha a közvetlen szomszédjába
+     * lép. Két mezős lépés ha a két kiválasztott terület között van egy mező.
+     * Érvénytelen lépés pedig, ha vagy kettőnél többet akar lépni, vagy 
+     * a célnak kiválasztott mező már foglalt.
+     * A célmező mindenképpen a célnak kiválasztott mező.
+     * 
+     * @param type a lépés típusa.
+     * @param piece a célmező.
      */
     public MoveResult(MoveType type, Piece piece) {
         this.type = type;

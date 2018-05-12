@@ -10,17 +10,37 @@ import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 
 /**
- *
- * @author hegedattila
+ * A tábla kirajzolására szolgáló osztály.
+ * 
+ * @author Hegedűs Attila
  */
 public class Board {
     
+    /**
+     * Egy mező magassága és szélessége.
+     */
     public static final int TILE_SIZE = 50;
+
+    /**
+     * A játéktábla szélessége a mezők számában mérve.
+     */
     public static final int WIDTH = 7;
+
+    /**
+     * A játéktábla magassága a mezők számában mérve.
+     */
     public static final int HEIGHT = 7;
     
+    /**
+     * Az összes mező tárolására.
+     */
     private static Group tileGroup = new Group();
     
+    /**
+     * A megjeleníteni kívánt felhasználói felület.
+     * 
+     * @return A felhasználói felület.
+     */
     public Parent draw(){
         
         Pane root = new Pane();

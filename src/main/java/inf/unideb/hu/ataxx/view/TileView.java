@@ -11,11 +11,24 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 /**
- *
- * @author hegedattila
+ * Ez az osztály felelős a játék mezőinek megrajzolására.
+ * 
+ * A játék kezdetekor, valamint minden érvényes lépés után megrajzolja a táblát
+ * a meglévő mezők alapján.
+ * 
+ * @author Hegedűs Attila
  */
 public class TileView extends Rectangle{
     
+    /**
+     * Megrajzolja a játékmezőt a megadott mezőszámmal.
+     * 
+     * Az üres mezők szürkével lesznek kitöltve, a foglaltak pirossal vagy
+     * kékkel, attól függően milyen típusú mezőről van szó.
+     * 
+     * @param x A tábla szélessége a mezők számában mérve.
+     * @param y A tábla magassága a mezők számában mérve.
+     */
     public TileView(int x, int y) {
         setWidth(Board.TILE_SIZE);
         setHeight(Board.TILE_SIZE);

@@ -8,31 +8,37 @@ package inf.unideb.hu.ataxx.model;
 /**
  * A játéktábla egy mezője és az, hogy a mező foglalt-e már.
  * 
- * @author hegedattila
+ * @author Hegedűs Attila
  */
 public class Tile {
     
+    /**
+     * A mező.
+     */
     private Piece piece;
 
     /**
-     *
-     * @return
+     * Visszaadja, hogy a terület folgalt-e már.
+     * 
+     * @return True, ha a terület foglalt.
      */
     public boolean hasPiece() {
         return piece != null;
     }
 
     /**
-     *
-     * @return
+     * Visszaadja a mezőt.
+     * 
+     * @return A mező.
      */
     public Piece getPiece() {
         return piece;
     }
 
     /**
-     *
-     * @param piece
+     * Beállítja a mezőt.
+     * 
+     * @param piece a mező.
      */
     public void setPiece(Piece piece) {
         this.piece = piece;

@@ -295,6 +295,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.1</version>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -320,8 +321,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.noraui</groupId>
-            <artifactId>ojdbc7</artifactId>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc8</artifactId>
             <version>12.1.0.2</version>
         </dependency>
         <dependency>
