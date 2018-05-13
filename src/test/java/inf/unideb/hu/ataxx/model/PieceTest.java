@@ -8,6 +8,8 @@ import org.junit.Test;
 
 
 import static org.junit.Assert.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -33,13 +35,18 @@ public class PieceTest {
     @After
     public void tearDown() throws Exception {
     }
+    
+    /**
+     * Logolásért felelős példány.
+     */
+    private static Logger logger = LoggerFactory.getLogger(PieceTest.class);
 
     /**
      * Test of getType method, of class Piece.
      */
     @Test
     public void testGetType() {
-        System.out.println("getType");
+        logger.info("getType");
         Piece instance = new Piece(PieceType.RED, 0, 0);
         PieceType expResult = PieceType.RED;
         PieceType result = instance.getType();
@@ -51,7 +58,7 @@ public class PieceTest {
      */
     @Test
     public void testSetType() {
-        System.out.println("setType");
+        logger.info("setType");
         PieceType type = PieceType.BLUE;
         Piece instance = new Piece(PieceType.RED, 0, 0);
         instance.setType(type);
@@ -62,7 +69,7 @@ public class PieceTest {
      */
     @Test
     public void testGetX() {
-        System.out.println("getX");
+        logger.info("getX");
         Piece instance = new Piece(PieceType.RED, 1, 1);
         int expResult = 1;
         int result = instance.getX();
@@ -74,7 +81,7 @@ public class PieceTest {
      */
     @Test
     public void testGetY() {
-        System.out.println("getY");
+        logger.info("getY");
         Piece instance = new Piece(PieceType.RED, 1, 1);
         int expResult = 1;
         int result = instance.getY();

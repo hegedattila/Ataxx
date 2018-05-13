@@ -11,6 +11,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -36,13 +38,23 @@ public class GameTest {
     @After
     public void tearDown() {
     }
+    
+    /**
+     * testCheckNeighbour-hoz
+     */
+    private Game instance;
+    
+    /**
+     * Logolásért felelős példány.
+     */
+    private static Logger logger = LoggerFactory.getLogger(GameTest.class);
 
     /**
      * Test of startNewGame method, of class Game.
      */
     @Test
     public void testStartNewGame() {
-        System.out.println("startNewGame");
+        logger.info("startNewGame");
         Game.startNewGame();
     }
 
@@ -51,7 +63,7 @@ public class GameTest {
      */
     @Test
     public void testValidChoose() {
-        System.out.println("validChoose");
+        logger.info("validChoose");
         int x0 = 0, y0 = 0, x1 = 1, y1 = 1;
         Game instance = new Game(7, 7);
         instance.startNewGame();
@@ -61,18 +73,80 @@ public class GameTest {
         assertEquals(expResult0, result0);
         assertEquals(expResult1, result1);
     }
+    
+    private void createPiece(Game instance, PieceType pt, int x, int y){
+        Tile tile = new Tile();
+        Piece piece = new Piece(pt, x, y);
+        tile.setPiece(piece);
+        instance.board[x][y] = tile;
+    }
+    
+    private void createNeighbours(Game instance, PieceType pt, int x, int y){
+        createPiece(instance, pt, x-1, y);
+        createPiece(instance, pt, x-1, y-1);
+        createPiece(instance, pt, x-1, y+1);
+        createPiece(instance, pt, x+1, y);
+        createPiece(instance, pt, x+1, y-1);
+        createPiece(instance, pt, x+1, y+1);
+        createPiece(instance, pt, x, y+1);
+        createPiece(instance, pt, x, y-1);
+        
+        logger.info("Neighbour tiles added.");
+    }
 
     /**
      * Test of checkNeighbourTypes method, of class Game.
      */
     @Test
+//    public void testCheckNeighbourTypes() {
+//        System.out.println("checkNeighbourTypes");
+//        int x = 0;
+//        int y = 0;
+//        Game instance = new Game(7, 7);
+//        instance.startNewGame();
+//        instance.checkNeighbourTypes(x, y);
+//    }
     public void testCheckNeighbourTypes() {
-        System.out.println("checkNeighbourTypes");
-        int x = 0;
-        int y = 0;
+        logger.info("checkNeighbourTypes");
+        int x = 4;
+        int y = 4;
+        
+        //Teszt pirossal
         Game instance = new Game(7, 7);
         instance.startNewGame();
+        
+        //(x,y)-ba piros
+        instance.setIsCurrentRed(true);
+        
+        createPiece(instance, PieceType.RED, x, y);
+        
+        //körben kék
+        createNeighbours(instance, PieceType.BLUE, x, y);
+        //teszt egyszerre
         instance.checkNeighbourTypes(x, y);
+        
+        //körben piros
+        createNeighbours(instance, PieceType.RED, x, y);
+        //teszt egyszerre
+        instance.checkNeighbourTypes(x, y);
+        
+        //Teszt kékkel
+        //(x,y)-ba kék
+        instance.setIsCurrentRed(false);
+        
+        createPiece(instance, PieceType.BLUE, x, y);
+
+        
+        //körben piros
+        createNeighbours(instance, PieceType.RED, x, y);
+        //teszt egyszerre
+        instance.checkNeighbourTypes(x, y);
+        
+        //körben kék
+        createNeighbours(instance, PieceType.BLUE, x, y);
+        //teszt egyszerre
+        instance.checkNeighbourTypes(x, y);
+        
     }
 
     /**
@@ -80,7 +154,7 @@ public class GameTest {
      */
     @Test
     public void testMove() {
-        System.out.println("move");
+        logger.info("move");
         int oldX0 = 0;
         int oldY0 = 0;
         int newX0 = 1;
@@ -108,7 +182,7 @@ public class GameTest {
      */
     @Test
     public void testIsEnd() {
-        System.out.println("isEnd");
+        logger.info("isEnd");
         Game instance = new Game(7, 7);
         boolean expResult0 = false, expResult1 = true, expResult2 = true;
         boolean result0 = instance.isEnd();
@@ -129,7 +203,7 @@ public class GameTest {
      */
     @Test
     public void testGetWIDTH() {
-        System.out.println("getWIDTH");
+        logger.info("getWIDTH");
         int expResult = 7;
         int result = Game.getWIDTH();
         assertEquals(expResult, result);
@@ -140,7 +214,7 @@ public class GameTest {
      */
     @Test
     public void testSetWIDTH() {
-        System.out.println("setWIDTH");
+        logger.info("setWIDTH");
         int WIDTH = 7;
         Game.setWIDTH(WIDTH);
     }
@@ -150,7 +224,7 @@ public class GameTest {
      */
     @Test
     public void testGetHEIGHT() {
-        System.out.println("getHEIGHT");
+        logger.info("getHEIGHT");
         int expResult = 7;
         int result = Game.getHEIGHT();
         assertEquals(expResult, result);
@@ -161,7 +235,7 @@ public class GameTest {
      */
     @Test
     public void testSetHEIGHT() {
-        System.out.println("setHEIGHT");
+        logger.info("setHEIGHT");
         int HEIGHT = 7;
         Game.setHEIGHT(HEIGHT);
     }
@@ -171,7 +245,7 @@ public class GameTest {
      */
     @Test
     public void testIsIsCurrentRed() {
-        System.out.println("isIsCurrentRed");
+        logger.info("isIsCurrentRed");
         boolean expResult = true;
         boolean result = Game.isIsCurrentRed();
         assertEquals(expResult, result);
@@ -182,7 +256,7 @@ public class GameTest {
      */
     @Test
     public void testSetIsCurrentRed() {
-        System.out.println("setIsCurrentRed");
+        logger.info("setIsCurrentRed");
         boolean isCurrentRed = false;
         Game.setIsCurrentRed(isCurrentRed);
     }
@@ -192,7 +266,7 @@ public class GameTest {
      */
     @Test
     public void testSetRedPoints() {
-        System.out.println("setRedPoints");
+        logger.info("setRedPoints");
         int redPoints = 2;
         Game.setRedPoints(redPoints);
     }
@@ -202,7 +276,7 @@ public class GameTest {
      */
     @Test
     public void testGetRedPoints() {
-        System.out.println("getRedPoints");
+        logger.info("getRedPoints");
         int expResult = 2;
         int result = Game.getRedPoints();
         assertEquals(expResult, result);
@@ -213,7 +287,7 @@ public class GameTest {
      */
     @Test
     public void testGetBluePoints() {
-        System.out.println("getBluePoints");
+        logger.info("getBluePoints");
         int expResult = 2;
         int result = Game.getBluePoints();
         assertEquals(expResult, result);
@@ -224,7 +298,7 @@ public class GameTest {
      */
     @Test
     public void testSetBluePoints() {
-        System.out.println("setBluePoints");
+        logger.info("setBluePoints");
         int bluePoints = 2;
         Game.setBluePoints(bluePoints);
     }
@@ -245,7 +319,7 @@ public class GameTest {
      */
     @Test
     public void testSetBoard() {
-        System.out.println("setBoard");
+        logger.info("setBoard");
         Tile[][] board = new Tile[7][7];
         Game.setBoard(board);
     }

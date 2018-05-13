@@ -8,6 +8,8 @@ import org.junit.Test;
 
 
 import static org.junit.Assert.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -33,13 +35,18 @@ public class TileTest {
     @After
     public void tearDown() throws Exception {
     }
+    
+    /**
+     * Logolásért felelős példány.
+     */
+    private static Logger logger = LoggerFactory.getLogger(TileTest.class);
 
     /**
      * Test of hasPiece method, of class Tile.
      */
     @Test
     public void testHasPiece() {
-        System.out.println("hasPiece");
+        logger.info("hasPiece");
         Tile instance = new Tile();
         boolean expResult = false;
         boolean result = instance.hasPiece();
@@ -51,7 +58,7 @@ public class TileTest {
      */
     @Test
     public void testGetPiece() {
-        System.out.println("getPiece");
+        logger.info("getPiece");
         Tile instance = new Tile();
         Piece expResult = null;
         Piece result = instance.getPiece();
@@ -63,7 +70,7 @@ public class TileTest {
      */
     @Test
     public void testSetPiece() {
-        System.out.println("setPiece");
+        logger.info("setPiece");
         Piece piece = null;
         Tile instance = new Tile();
         instance.setPiece(piece);

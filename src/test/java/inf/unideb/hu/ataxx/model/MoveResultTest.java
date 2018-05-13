@@ -8,6 +8,8 @@ import org.junit.Test;
 
 
 import static org.junit.Assert.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -33,13 +35,18 @@ public class MoveResultTest {
     @After
     public void tearDown() throws Exception {
     }
+    
+    /**
+     * Logolásért felelős példány.
+     */
+    private static Logger logger = LoggerFactory.getLogger(MoveResultTest.class);    
 
     /**
      * Test of getType method, of class MoveResult.
      */
     @Test
     public void testGetType() {
-        System.out.println("getType");
+        logger.info("getType");
         MoveResult instance = new MoveResult(MoveType.ONE);
         MoveType expResult = MoveType.ONE;
         MoveType result = instance.getType();
@@ -51,7 +58,7 @@ public class MoveResultTest {
      */
     @Test
     public void testGetPiece() {
-        System.out.println("getPiece");
+        logger.info("getPiece");
         MoveResult instance = new MoveResult(MoveType.ONE);
         Piece expResult = null;
         Piece result = instance.getPiece();
